@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="/img/bigdata.jpg">
+  <img src="/Imagens/bigdata.jpg">
 </p>
 
 # Trabalho de Gerência de Infraestrutura para Big Data
