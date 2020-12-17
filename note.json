@@ -1,0 +1,1076 @@
+{
+  "paragraphs": [
+    {
+      "text": "%hive\n\nSET hive.execution.engine\u003dmr;\nSET mapreduce.framework.name\u003dyarn;",
+      "user": "anonymous",
+      "dateUpdated": "2020-12-17 18:13:56.872",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1607988553984_1489972800",
+      "id": "20201214-212913_587166875",
+      "dateCreated": "2020-12-14 21:29:13.984",
+      "dateStarted": "2020-12-17 18:13:56.934",
+      "dateFinished": "2020-12-17 18:13:56.963",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%hive\nUSE veiculosrs;",
+      "user": "anonymous",
+      "dateUpdated": "2020-12-17 18:14:00.538",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1607988589386_1117146326",
+      "id": "20201214-212949_1376537833",
+      "dateCreated": "2020-12-14 21:29:49.386",
+      "dateStarted": "2020-12-17 18:14:00.612",
+      "dateFinished": "2020-12-17 18:14:00.666",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%hive\n--Quais são os dez automóveis mais registrados no RS?\nSELECT REGEXP_EXTRACT(marca,\u0027^\\\\S*\u0027,0) CARRO, COUNT(marca) QTD\nFROM dezembro2020\nWHERE TIPO IN(\u0027AUTOMOVEL\u0027,\u0027UTILITARIO\u0027,\u0027CAMINHONETE\u0027,\u0027CAMIONETA\u0027)\nGROUP BY REGEXP_EXTRACT(marca,\u0027^\\\\S*\u0027,0)\nORDER BY COUNT(marca) DESC\nLIMIT 10;",
+      "user": "anonymous",
+      "dateUpdated": "2020-12-17 18:14:02.460",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "carro": "string",
+                      "qtd": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [],
+              "groups": [],
+              "values": []
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "carro\tqtd\nVW/GOL\t436848\nFIAT/UNO\t235403\nFIAT/PALIO\t220994\nGM/CORSA\t168925\nFORD/FIESTA\t162641\nVW/FUSCA\t160732\nI/FORD\t137621\nFORD/KA\t117961\nGM/CHEVETTE\t104880\nGM/CELTA\t83547\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1607988625891_1597901480",
+      "id": "20201214-213025_780962550",
+      "dateCreated": "2020-12-14 21:30:25.891",
+      "dateStarted": "2020-12-17 18:14:02.541",
+      "dateFinished": "2020-12-17 18:15:33.936",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%hive\n-- Quais as 15 cores mais comuns em Porto Alegre em automóveis?\nSELECT COR, COUNT(COR) QTD\nFROM dezembro2020\nWHERE TIPO IN(\u0027AUTOMOVEL\u0027,\u0027UTILITARIO\u0027,\u0027CAMINHONETE\u0027,\u0027CAMIONETA\u0027)\nAND MUNIC_EMPLACAMENTO \u003d \u0027PORTO ALEGRE\u0027\nGROUP BY COR\nORDER BY COUNT(COR) DESC\nLIMIT 15;",
+      "user": "anonymous",
+      "dateUpdated": "2020-12-15 23:19:33.360",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "cor": "string",
+                      "qtd": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "cor\tqtd\nBranca\t185336\nPrata\t129357\nPreta\t104729\nVermelha\t85671\nCinza\t80786\nAzul\t45537\nVerde\t28631\nBege\t18511\nMarrom\t7566\nAmarela\t5254\nDourada\t3087\nLaranja\t1879\nGrená\t309\nFantasia\t253\nRoxa\t217\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1608040429995_849784823",
+      "id": "20201215-115349_1639359717",
+      "dateCreated": "2020-12-15 11:53:49.995",
+      "dateStarted": "2020-12-15 23:19:33.367",
+      "dateFinished": "2020-12-15 23:20:27.859",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%hive\n--3 - Quais os tipos de combustíveis mais utilizados no RS?\nSELECT combustivel, COUNT(combustivel) QTD\nFROM dezembro2020\nWHERE combustivel NOT IN(\u0027SEM COMBUSTIVEL\u0027,\u0027VIDE CAMPO OBSERVACAO\u0027)\nGROUP BY combustivel\nORDER BY COUNT(combustivel) DESC;",
+      "user": "anonymous",
+      "dateUpdated": "2020-12-15 23:21:11.652",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "combustivel": "string",
+                      "qtd": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "combustivel",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "qtd",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "combustivel\tqtd\nGASOLINA\t3407348\nALCOOL/GASOLINA\t2531140\nDIESEL\t648767\nALCOOL\t171800\nGASOLINA/GAS NATURAL VEICULAR\t40316\nGASOLINA/ALCOOL/GAS NATURAL VEICULAR\t40097\nALCOOL/GAS NATURAL VEICULAR\t1869\nGASOLINA/ELETRICO\t1825\nGASOLINA /ALCOOL / ELETRICO\t602\nELETRICO/FONTE INTERNA\t108\nELETRICO/FONTE EXTERNA\t106\nGAS METANO\t75\nGASOGENIO\t32\nGAS NATURAL VEICULAR\t5\nDIESEL/GAS NATURAL (COMBIN.)\t4\nDIESEL/GAS NATURAL VEICULAR\t3\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1607990681732_1074953970",
+      "id": "20201214-220441_1660613727",
+      "dateCreated": "2020-12-14 22:04:41.732",
+      "dateStarted": "2020-12-15 23:21:11.681",
+      "dateFinished": "2020-12-15 23:22:08.625",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%hive\n--4 - Quais os modelos/marca dos automóveis elétricos que rodam no RS?\nSELECT MARCA, COUNT(MARCA) QTD\nFROM DEZEMBRO2020\nWHERE COMBUSTIVEL IN (\u0027ELETRICO/FONTE INTERNA\u0027,\u0027ELETRICO/FONTE EXTERNA\u0027)\nAND TIPO IN(\u0027AUTOMOVEL\u0027,\u0027UTILITARIO\u0027,\u0027CAMINHONETE\u0027,\u0027CAMIONETA\u0027)\nGROUP BY MARCA\nORDER BY COUNT(MARCA) DESC\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-12-15 23:43:03.067",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "marca": "string",
+                      "qtd": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "marca\tqtd\nI/NISSAN LEAF TEKNA\t10\nI/BMW I3 REX\t8\nI/JAG IPACE E400 SE\t8\nI/CHEVROLET BOLT PREMIER\t8\nI/BMW I8\t5\nI/VOLVO XC90 T8 INSCRIPT\t4\nI/AUDI E TRON\t4\nMON/PROTOTIPO\t3\nI/JAC IEV 20\t3\nI/RENAULT ZOE INTENS LR\t3\nI/JAC IEV40\t2\nI/AUDI E TRON SPB\t2\nI/M.BENZ EQC400 4M\t2\nI/TESLA MODEL Y PERFORM\t1\nI/RENAULT ZOE LIFE LR\t1\nI/BYD E6\t1\nI/VOLVO XC90 T8 EXCELLEN\t1\nI/BMW I3 REX 94AH\t1\nI/BMW I3 BEV\t1\nI/CHRYSLER PACIFICA LMT\t1\nP.DRESCH/F.PROPRIA AUTO\t1\nI/BMW I3 BEV 120AH\t1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1607991632144_2103178916",
+      "id": "20201214-222032_2051118630",
+      "dateCreated": "2020-12-14 22:20:32.144",
+      "dateStarted": "2020-12-15 23:22:30.773",
+      "dateFinished": "2020-12-15 23:23:25.329",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%hive\n-- Qual a média de idade, desvio padrão da idade e o ano de menor fabricação da frota de automóveis em Porto Alegre, Caxias do Sul, Alvorada, Dom Pedrito, Gramado, Santa Vitória do Palmar e Mostardas?\nSELECT MUNIC_EMPLACAMENTO, AVG(2020 - FABRICACAO) AS MEDIA_IDADE_AUTOMOVEL\n     , STDDEV_POP(2020 - FABRICACAO) AS DESVP_IDADE\n     , MIN(FABRICACAO) AS  MENOR_ANO_FABRICACAO\nFROM DEZEMBRO2020\nWHERE TIPO IN(\u0027AUTOMOVEL\u0027,\u0027UTILITARIO\u0027,\u0027CAMINHONETE\u0027,\u0027CAMIONETA\u0027)\nAND MUNIC_EMPLACAMENTO IN (\u0027PORTO ALEGRE\u0027,\u0027ALVORADA\u0027,\u0027CAXIAS DO SUL\u0027,\u0027DOM PEDRITO\u0027,\u0027SANTA VITORIA DO PALMAR\u0027,\u0027MOSTARDAS\u0027)\nGROUP BY MUNIC_EMPLACAMENTO\nORDER BY MEDIA_IDADE_AUTOMOVEL\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-12-15 23:24:02.294",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "munic_emplacamento": "string",
+                      "media_idade_automovel": "string",
+                      "desvp_idade": "string",
+                      "menor_ano_fabricacao": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "munic_emplacamento\tmedia_idade_automovel\tdesvp_idade\tmenor_ano_fabricacao\nPORTO ALEGRE\t14.934199938898713\t12.27753413511808\t1918\nCAXIAS DO SUL\t16.129839536079842\t11.973744273703714\t1923\nDOM PEDRITO\t18.877381385754155\t13.523373833338406\t1928\nALVORADA\t18.877902667049906\t12.18732753681818\t1946\nMOSTARDAS\t19.205029838022167\t12.767585713358606\t1954\nSANTA VITORIA DO PALMAR\t20.057506131405706\t13.577509521799941\t1928\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1608042473702_-1515583596",
+      "id": "20201215-122753_793217482",
+      "dateCreated": "2020-12-15 12:27:53.702",
+      "dateStarted": "2020-12-15 23:24:02.326",
+      "dateFinished": "2020-12-15 23:25:00.155",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%hive\n\nCREATE TABLE dezembro2020_ORC (\n    marca STRING,\n    fabricacao INT,\n    categoria STRING,\n    especie STRING,\n    tipo STRING,\n    carroceria STRING,\n    cor STRING,\n    combustivel STRING,\n    cilindradas INT,\n    potencia INT,\n    situacao STRING,\n    munic_emplacamento STRING,\n    lotacao STRING,\n    cmt STRING,\n    pbt STRING,\n    capacidade_carga STRING,\n    tipo_proprietario STRING,\n    sexo_proprietario STRING,\n    idade INT,\n    data_aquisicao STRING,\n    tipo_primeiro_registro STRING,\n    dt_primeiro_reg STRING,\n    dt_ultimo_doc_licenciado STRING,\n    situacao_licenciamento STRING,\n    situacao_infracoes STRING,\n    restricoes STRING,\n    tipo_restricao STRING\n)\nROW FORMAT DELIMITED\nFIELDS TERMINATED BY \u0027;\u0027\nSTORED AS ORC;",
+      "user": "anonymous",
+      "dateUpdated": "2020-12-15 23:29:48.765",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1608082105910_61220568",
+      "id": "20201215-232825_614129445",
+      "dateCreated": "2020-12-15 23:28:25.910",
+      "dateStarted": "2020-12-15 23:29:48.785",
+      "dateFinished": "2020-12-15 23:29:49.657",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%hive\nINSERT OVERWRITE TABLE dezembro2020_ORC SELECT * FROM dezembro2020;\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-12-15 23:30:29.974",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1608082195663_-1856574133",
+      "id": "20201215-232955_1808418457",
+      "dateCreated": "2020-12-15 23:29:55.663",
+      "dateStarted": "2020-12-15 23:30:29.983",
+      "dateFinished": "2020-12-15 23:31:42.547",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%hive\nSELECT * FROM dezembro2020_ORC\nLIMIT 10;",
+      "user": "anonymous",
+      "dateUpdated": "2020-12-15 23:32:23.960",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "dezembro2020_orc.marca": "string",
+                      "dezembro2020_orc.fabricacao": "string",
+                      "dezembro2020_orc.categoria": "string",
+                      "dezembro2020_orc.especie": "string",
+                      "dezembro2020_orc.tipo": "string",
+                      "dezembro2020_orc.carroceria": "string",
+                      "dezembro2020_orc.cor": "string",
+                      "dezembro2020_orc.combustivel": "string",
+                      "dezembro2020_orc.cilindradas": "string",
+                      "dezembro2020_orc.potencia": "string",
+                      "dezembro2020_orc.situacao": "string",
+                      "dezembro2020_orc.munic_emplacamento": "string",
+                      "dezembro2020_orc.lotacao": "string",
+                      "dezembro2020_orc.cmt": "string",
+                      "dezembro2020_orc.pbt": "string",
+                      "dezembro2020_orc.capacidade_carga": "string",
+                      "dezembro2020_orc.tipo_proprietario": "string",
+                      "dezembro2020_orc.sexo_proprietario": "string",
+                      "dezembro2020_orc.idade": "string",
+                      "dezembro2020_orc.data_aquisicao": "string",
+                      "dezembro2020_orc.tipo_primeiro_registro": "string",
+                      "dezembro2020_orc.dt_primeiro_reg": "string",
+                      "dezembro2020_orc.dt_ultimo_doc_licenciado": "string",
+                      "dezembro2020_orc.situacao_licenciamento": "string",
+                      "dezembro2020_orc.situacao_infracoes": "string",
+                      "dezembro2020_orc.restricoes": "string",
+                      "dezembro2020_orc.tipo_restricao": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "dezembro2020_orc.marca\tdezembro2020_orc.fabricacao\tdezembro2020_orc.categoria\tdezembro2020_orc.especie\tdezembro2020_orc.tipo\tdezembro2020_orc.carroceria\tdezembro2020_orc.cor\tdezembro2020_orc.combustivel\tdezembro2020_orc.cilindradas\tdezembro2020_orc.potencia\tdezembro2020_orc.situacao\tdezembro2020_orc.munic_emplacamento\tdezembro2020_orc.lotacao\tdezembro2020_orc.cmt\tdezembro2020_orc.pbt\tdezembro2020_orc.capacidade_carga\tdezembro2020_orc.tipo_proprietario\tdezembro2020_orc.sexo_proprietario\tdezembro2020_orc.idade\tdezembro2020_orc.data_aquisicao\tdezembro2020_orc.tipo_primeiro_registro\tdezembro2020_orc.dt_primeiro_reg\tdezembro2020_orc.dt_ultimo_doc_licenciado\tdezembro2020_orc.situacao_licenciamento\tdezembro2020_orc.situacao_infracoes\tdezembro2020_orc.restricoes\tdezembro2020_orc.tipo_restricao\nIMP/CHEVROLET\t1903\tParticular\tPASSAGEIRO\tAUTOMOVEL\tSem Carroceria\tVerde\tGASOLINA\t0\t22\tEM CIRCULACAO\tCANOAS\t5\t0\t0\t0\tPESSOA FISICA\tMasculino\t84\t02/01/1997 00:00:00\tPROPRIETARIO\t14/08/1991 00:00:00\t01/07/2000 00:00:00\tNão\tNao Pendente de Pagamento\tSIM\tJUDICIARIA\nREB/SICREL SMC\t1906\tParticular\tCARGA\tREBOQUE\tSem Carroceria\tBranca\tSEM COMBUSTIVEL\t0\t0\tEM CIRCULACAO\tPORTO ALEGRE\t0\t0\t.3\t.3\tPESSOA JURIDICA\tN/A\tnull\t16/06/1997 00:00:00\tPROPRIETARIO\t16/06/1997 00:00:00\t01/04/2003 00:00:00\tNão\tNao Pendente de Pagamento\tSIM\tJUDICIARIA\nIMP/STUDEBAKER\t1909\tParticular\tPASSAGEIRO\tAUTOMOVEL\tSem Carroceria\tMarrom\tGASOLINA\t0\t40\tEM CIRCULACAO\tPASSO DO SOBRADO\t4\t0\t0\t0\tPESSOA FISICA\tN/A\tnull\t09/04/2001 00:00:00\tPROPRIETARIO\t09/04/2001 00:00:00\t01/06/2002 00:00:00\tNão\tNao Pendente de Pagamento\tSIM\tJUDICIARIA\nIMP/FORD\t1915\tParticular\tPASSAGEIRO\tAUTOMOVEL\tSem Carroceria\tPreta\tGASOLINA\t0\t40\tEM CIRCULACAO\tSAO LEOPOLDO\t5\t0\t0\t0\tPESSOA FISICA\tN/A\tnull\t10/10/2003 00:00:00\tPROPRIETARIO DE OUTRA UF\t10/10/2003 00:00:00\t01/05/2021 00:00:00\tSim\tNao Pendente de Pagamento\tNAO\t\nIMP/FORD\t1917\tParticular\tPASSAGEIRO\tAUTOMOVEL\tSem Carroceria\tPreta\tGASOLINA\t0\t20\tEM CIRCULACAO\tROSARIO DO SUL\t2\t0\t0\t0\tPESSOA FISICA\tMasculino\t82\t14/12/1989 00:00:00\tPROPRIETARIO\t14/12/1989 00:00:00\t01/07/2020 00:00:00\tNão\tNao Pendente de Pagamento\tNAO\t\nIMP/FORD\t1917\tParticular\tCOLECAO\tAUTOMOVEL\tSem Carroceria\tPreta\tGASOLINA\t0\t22\tEM CIRCULACAO\tCACHOEIRA DO SUL\t5\t0\t0\t0\tPESSOA FISICA\tMasculino\t69\t14/04/2010 00:00:00\tPROPRIETARIO\t30/01/1998 00:00:00\t01/07/2021 00:00:00\tSim\tNao Pendente de Pagamento\tNAO\t\nIMP/FORD\t1918\tParticular\tCOLECAO\tAUTOMOVEL\tSem Carroceria\tPreta\tGASOLINA\t0\t34\tEM CIRCULACAO\tPORTO ALEGRE\t5\t0\t0\t0\tPESSOA FISICA\tN/A\tnull\t22/04/2010 00:00:00\tPROPRIETARIO\t05/08/1972 00:00:00\t01/05/2021 00:00:00\tSim\tNao Pendente de Pagamento\tNAO\t\nIMP/FORD\t1919\tOficial\tPASSAGEIRO\tAUTOMOVEL\tSem Carroceria\tPreta\tGASOLINA\t0\t90\tEM CIRCULACAO\tPORTO ALEGRE\t5\t0\t0\t0\tPESSOA JURIDICA\tN/A\tnull\t25/10/1989 00:00:00\tPROPRIETARIO\t25/10/1989 00:00:00\t01/07/2021 00:00:00\tSim\tNao Pendente de Pagamento\tSIM\tADMINISTRATIVA\nIMP/FORD\t1920\tParticular\tCOLECAO\tAUTOMOVEL\tSem Carroceria\tPreta\tGASOLINA\t0\t34\tEM CIRCULACAO\tPORTO ALEGRE\t5\t0\t0\t0\tPESSOA FISICA\tN/A\tnull\t12/04/2001 00:00:00\tPROPRIETARIO\t26/04/1971 00:00:00\t01/04/2021 00:00:00\tSim\tNao Pendente de Pagamento\tNAO\t\nIMP/FORD\t1922\tParticular\tPASSAGEIRO\tMICROONIBUS\tSem Carroceria\tPreta\tGASOLINA\t0\t22\tEM CIRCULACAO\tCANOAS\t11\t0\t0\t0\tPESSOA FISICA\tN/A\tnull\t30/01/1998 00:00:00\tPROPRIETARIO\t30/01/1998 00:00:00\t01/04/2008 00:00:00\tNão\tNao Pendente de Pagamento\tSIM\tJUDICIARIA\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1608082229974_690132865",
+      "id": "20201215-233029_354443893",
+      "dateCreated": "2020-12-15 23:30:29.974",
+      "dateStarted": "2020-12-15 23:32:21.939",
+      "dateFinished": "2020-12-15 23:32:22.188",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%hive\nSELECT COR, COUNT(COR) QTD\nFROM dezembro2020_ORC\nWHERE TIPO IN(\u0027AUTOMOVEL\u0027,\u0027UTILITARIO\u0027,\u0027CAMINHONETE\u0027,\u0027CAMIONETA\u0027)\nAND MUNIC_EMPLACAMENTO \u003d \u0027PORTO ALEGRE\u0027\nGROUP BY COR\nORDER BY COUNT(COR) DESC\nLIMIT 15;",
+      "user": "anonymous",
+      "dateUpdated": "2020-12-15 23:39:02.908",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "cor": "string",
+                      "qtd": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "cor\tqtd\nBranca\t185336\nPrata\t129357\nPreta\t104729\nVermelha\t85671\nCinza\t80786\nAzul\t45537\nVerde\t28631\nBege\t18511\nMarrom\t7566\nAmarela\t5254\nDourada\t3087\nLaranja\t1879\nGrená\t309\nFantasia\t253\nRoxa\t217\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1608082373667_-1299587505",
+      "id": "20201215-233253_445195906",
+      "dateCreated": "2020-12-15 23:32:53.667",
+      "dateStarted": "2020-12-15 23:38:23.994",
+      "dateFinished": "2020-12-15 23:39:02.415",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%hive\nSELECT combustivel, COUNT(combustivel) QTD\nFROM dezembro2020_ORC\nWHERE combustivel NOT IN(\u0027SEM COMBUSTIVEL\u0027,\u0027VIDE CAMPO OBSERVACAO\u0027)\nGROUP BY combustivel\nORDER BY COUNT(combustivel) DESC;\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-12-15 23:41:10.958",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "combustivel": "string",
+                      "qtd": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "combustivel\tqtd\nGASOLINA\t3407348\nALCOOL/GASOLINA\t2531140\nDIESEL\t648767\nALCOOL\t171800\nGASOLINA/GAS NATURAL VEICULAR\t40316\nGASOLINA/ALCOOL/GAS NATURAL VEICULAR\t40097\nALCOOL/GAS NATURAL VEICULAR\t1869\nGASOLINA/ELETRICO\t1825\nGASOLINA /ALCOOL / ELETRICO\t602\nELETRICO/FONTE INTERNA\t108\nELETRICO/FONTE EXTERNA\t106\nGAS METANO\t75\nGASOGENIO\t32\nGAS NATURAL VEICULAR\t5\nDIESEL/GAS NATURAL (COMBIN.)\t4\nDIESEL/GAS NATURAL VEICULAR\t3\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1608082437530_1495980894",
+      "id": "20201215-233357_238659851",
+      "dateCreated": "2020-12-15 23:33:57.530",
+      "dateStarted": "2020-12-15 23:40:30.059",
+      "dateFinished": "2020-12-15 23:41:07.582",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%hive\nSELECT MARCA, COUNT(MARCA) QTD\nFROM DEZEMBRO2020_ORC\nWHERE COMBUSTIVEL IN (\u0027ELETRICO/FONTE INTERNA\u0027,\u0027ELETRICO/FONTE EXTERNA\u0027)\nAND TIPO IN(\u0027AUTOMOVEL\u0027,\u0027UTILITARIO\u0027,\u0027CAMINHONETE\u0027,\u0027CAMIONETA\u0027)\nGROUP BY MARCA\nORDER BY COUNT(MARCA) DESC",
+      "user": "anonymous",
+      "dateUpdated": "2020-12-15 23:46:38.548",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "marca": "string",
+                      "qtd": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "marca\tqtd\nI/NISSAN LEAF TEKNA\t10\nI/JAG IPACE E400 SE\t8\nI/BMW I3 REX\t8\nI/CHEVROLET BOLT PREMIER\t8\nI/BMW I8\t5\nI/AUDI E TRON\t4\nI/VOLVO XC90 T8 INSCRIPT\t4\nI/JAC IEV 20\t3\nMON/PROTOTIPO\t3\nI/RENAULT ZOE INTENS LR\t3\nI/JAC IEV40\t2\nI/M.BENZ EQC400 4M\t2\nI/AUDI E TRON SPB\t2\nI/CHRYSLER PACIFICA LMT\t1\nI/RENAULT ZOE LIFE LR\t1\nI/BYD E6\t1\nI/TESLA MODEL Y PERFORM\t1\nI/BMW I3 REX 94AH\t1\nI/VOLVO XC90 T8 EXCELLEN\t1\nI/BMW I3 BEV 120AH\t1\nI/BMW I3 BEV\t1\nP.DRESCH/F.PROPRIA AUTO\t1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1608082830046_-1750337054",
+      "id": "20201215-234030_323319993",
+      "dateCreated": "2020-12-15 23:40:30.046",
+      "dateStarted": "2020-12-15 23:46:38.576",
+      "dateFinished": "2020-12-15 23:47:18.071",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%hive\nSELECT MUNIC_EMPLACAMENTO, AVG(2020 - FABRICACAO) AS MEDIA_IDADE_AUTOMOVEL\n     , STDDEV_POP(2020 - FABRICACAO) AS DESVP_IDADE\n     , MIN(FABRICACAO) AS  MENOR_ANO_FABRICACAO\nFROM DEZEMBRO2020_ORC\nWHERE TIPO IN(\u0027AUTOMOVEL\u0027,\u0027UTILITARIO\u0027,\u0027CAMINHONETE\u0027,\u0027CAMIONETA\u0027)\nAND MUNIC_EMPLACAMENTO IN (\u0027PORTO ALEGRE\u0027,\u0027ALVORADA\u0027,\u0027CAXIAS DO SUL\u0027,\u0027DOM PEDRITO\u0027,\u0027SANTA VITORIA DO PALMAR\u0027,\u0027MOSTARDAS\u0027)\nGROUP BY MUNIC_EMPLACAMENTO\nORDER BY MEDIA_IDADE_AUTOMOVEL\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-12-15 23:49:04.932",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "munic_emplacamento": "string",
+                      "media_idade_automovel": "string",
+                      "desvp_idade": "string",
+                      "menor_ano_fabricacao": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "munic_emplacamento\tmedia_idade_automovel\tdesvp_idade\tmenor_ano_fabricacao\nPORTO ALEGRE\t14.934199938898713\t12.27753413511808\t1918\nCAXIAS DO SUL\t16.129839536079842\t11.973744273703714\t1923\nDOM PEDRITO\t18.877381385754155\t13.523373833338406\t1928\nALVORADA\t18.877902667049906\t12.18732753681818\t1946\nMOSTARDAS\t19.205029838022167\t12.767585713358606\t1954\nSANTA VITORIA DO PALMAR\t20.057506131405706\t13.577509521799941\t1928\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1608083029984_-1581577558",
+      "id": "20201215-234349_1769021109",
+      "dateCreated": "2020-12-15 23:43:49.984",
+      "dateStarted": "2020-12-15 23:48:20.707",
+      "dateFinished": "2020-12-15 23:49:02.670",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%hive\nSELECT COUNT(*) FROM DEZEMBRO2020;",
+      "user": "anonymous",
+      "dateUpdated": "2020-12-17 18:16:33.362",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "_c0": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "_c0\n7123342\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1608083603140_2022039419",
+      "id": "20201215-235323_592345293",
+      "dateCreated": "2020-12-15 23:53:23.140",
+      "dateStarted": "2020-12-17 18:16:08.557",
+      "dateFinished": "2020-12-17 18:16:32.516",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%hive\nSELECT COUNT(*) FROM DEZEMBRO2020_ORC;",
+      "user": "anonymous",
+      "dateUpdated": "2020-12-17 18:16:40.601",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "_c0": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "_c0\n7123342\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1608236168534_370174242",
+      "id": "20201217-181608_1757076816",
+      "dateCreated": "2020-12-17 18:16:08.534",
+      "dateStarted": "2020-12-17 18:16:39.397",
+      "dateFinished": "2020-12-17 18:16:39.773",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%hive\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-12-17 18:18:43.344",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1608236323344_712908465",
+      "id": "20201217-181843_718231976",
+      "dateCreated": "2020-12-17 18:18:43.344",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "veiculosRS",
+  "id": "2FS845ZFZ",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "hive:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {}
+}
