@@ -16,7 +16,7 @@ No repositório contém um relatório que descreve todo o processo de criação 
 **Link para o conjunto de dados:**
 * [Frota de Veiculos em Circulação Dezembro 2020](https://dados.rs.gov.br/dataset/frota-veiculos-em-circulacao/resource/85ea91f9-943b-43e0-bc1c-6570b4fcd565?inner_span=True)
 
-\section{Processo de configuração do Hadoop, Hive e Zeppelin}
+### Processo de configuração do Hadoop, Hive e Zeppelin
 Para a instalação da plataforma Hadoop, foi utilizada uma máquina com sistema operacional Ubuntu 18.04.5 LTS que já continha o Java 8 instalado. Tal processo também pode ser feito em uma máquina virtual que contenha estes requisitos. A versão do Hadoop utilizada é a 3.2.1, que é a última versão estável. Através do terminal do Linux, inicialmente foi realizado o download da plataforma para posteriormente descompactar esta e configurar as variáveis de ambiente com o arquivo hadoop_vars.sh, configurar o arquivo hadoop_env.sh para que o Hadoop encontre o Java e configurar o diretório de logs, conforme os comandos abaixo:
 
 ```bash
@@ -39,14 +39,9 @@ sed -i "\$aexport JAVA_HOME=$JAVA_HOME" $HADOOP_HOME/etc/hadoop/hadoopenv.sh
 mkdir $HADOOP_HOME/logs	
 ```
 
-Na sequência, foi necessário alterar a configuração de arquivos que ficam na home do Hadoop. No arquivo \textit{core-site.xml} foi informado onde está localizado o sistema de arquivos e onde devem ser gravados arquivos de sistema. No arquivo \textit{hdfs-site.xml} foi indicado o número de réplicas para os blocos dos arquivos no sistema, que neste caso é apenas um, pois está sendo utilizada uma máquina. Por fim, no arquivo \textit{yarn-site.xml} foi habilitado o serviço \textit{mapreduce shuffle} e no arquivo mapred-site foi especificado que será utilizado o yarn como framework de escalonamento. Tais alterações foram realizadas com a inserção das seguintes propriedades:
+Na sequência, foi necessário alterar a configuração de arquivos que ficam na home do Hadoop. No arquivo core-site.xml foi informado onde está localizado o sistema de arquivos e onde devem ser gravados arquivos de sistema. No arquivo hdfs-site.xml foi indicado o número de réplicas para os blocos dos arquivos no sistema, que neste caso é apenas um, pois está sendo utilizada uma máquina. Por fim, no arquivo yarn-site.xml foi habilitado o serviçomapreduce shuffle e no arquivo mapred-site foi especificado que será utilizado o yarn como framework de escalonamento. Tais alterações foram realizadas com a inserção das seguintes propriedades:
 
-\begin{multicols}{2}
-
-\begin{flushleft}
 core-site.xml:
-\end{flushleft}
-\begin{minted}[fontsize=\scriptsize]{xml}
 <configuration>
 <property>
 <name>fs.defaultFS</name>
@@ -57,26 +52,16 @@ core-site.xml:
 <value>/home/${user.name}/hadooptmp</value>
 </property>
 </configuration>
-\end{minted}
-\medskip
 
-\begin{flushleft}
 hdfs-site.xml:
-\end{flushleft}
-\begin{minted}[fontsize=\scriptsize]{xml}
 <configuration>
 <property>
 <name>dfs.replication</name>
 <value>1</value>
 </property>
 </configuration>
-\end{minted}
 
-
-\begin{flushleft}
 mapred-site.xml:
-\end{flushleft}
-\begin{minted}[fontsize=\scriptsize]{xml}
 <configuration>
 <property>
 <name>mapreduce.framework.name</name>
@@ -84,29 +69,21 @@ mapred-site.xml:
 </property>
 <property>
 <name>mapreduce.application.classpath</name>
-<value>$HADOOP_HOME/share/hadoop/mapreduce/*:
-$HADOOP_HOME/share/hadoop/mapreduce/lib/*</value>
+<value>$HADOOP_HOME/share/hadoop/mapreduce/*:$HADOOP_HOME/share/hadoop/mapreduce/lib/*</value>
 </property>
 </configuration>
-\end{minted}
 
-\begin{flushleft}
 yarn-site.xml:
-\end{flushleft}
-\begin{minted}[fontsize=\scriptsize]{xml}
 <configuration>
 <property>
 <name>yarn.nodemanager.aux-services</name>
 <value>mapreduce_shuffle</value>
 </property>
 </configuration>
-\end{minted}
-
-\end{multicols}
 
 Em seguida, para finalizar a configuração do Hadoop, foi realizada a formatação do HDFS e a inicialização dos serviços do Hadoop em modo daemon para a criação dos diretórios e alteração de permissões, de acordo com os comandos a seguir:
 
-\begin{minted}[fontsize=\scriptsize]{bash}
+```bash
 echo 'Y' | hdfs namenode -format
 
 yarn --daemon start resourcemanager
@@ -119,29 +96,29 @@ hdfs dfs -mkdir -p /user/$USER
 hdfs dfs -chown $USER:$USER /user/$USER
 hdfs dfs -mkdir /tmp
 hdfs dfs -chmod 777 /tmp
-\end{minted}
+```
 
 A próxima etapa é a instalação do Apache Hive, que permitirá a manipulação de bancos de dados e tabelas com comandos SQL. A versão utilizada será a 3.1.2, que pode ser baixada e descompactada conforme os seguintes comandos:
 
-\begin{minted}[fontsize=\scriptsize]{bash}
+```bash
 wget -c https://downloads.apache.org/hive/hive-3.1.2/apache-hive-3.1.2-bin.tar.gz
 tar -zxvf apache-hive-3.1.2-bin.tar.gz
-\end{minted}
+```
 
 Para facilitar o processo de encontrar o programa, foi alterado o arquivo hadoop_vars.sh, inserindo a linha referente ao Hive e alterando a linha do Path:
 
-\begin{minted}[fontsize=\scriptsize]{bash}
+```bash
 export HIVE_HOME=$HOME/apache-hive-3.1.2-bin
 export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$HIVE_HOME/bin:$PATH
-\end{minted}
+```
 
-Prosseguindo no terminal do Linux e já tendo carregado novamente o arquivo \textit{hadoop_vars.sh} com as variáveis de ambiente, foi necessário realizar uma correção nas versões das bibliotecas guava e slf4j para um melhor funcionamento do programa:
+Prosseguindo no terminal do Linux e já tendo carregado novamente o arquivo hadoop_vars.sh com as variáveis de ambiente, foi necessário realizar uma correção nas versões das bibliotecas guava e slf4j para um melhor funcionamento do programa:
 
-\begin{minted}[fontsize=\scriptsize]{bash}
+```bash
 rm $HIVE_HOME/lib/guava-19.0.jar
 cp $HADOOP_HOME/share/hadoop/hdfs/lib/guava-27.0-jre.jar $HIVE_HOME/lib
 rm $HIVE_HOME/lib/log4j-slf4j-impl-2.10.0.jar
-\end{minted}
+```
 
 Para configurar o usuário que acessará o Hive, foi preciso novamente alterar o arquivo \textit{core-site.xml} incluindo as properties a seguir, nas quais username refere-se ao nome de usuário do sistema Linux:
 
