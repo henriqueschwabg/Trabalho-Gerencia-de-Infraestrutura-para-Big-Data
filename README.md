@@ -19,23 +19,25 @@ No repositório contém um relatório que descreve todo o processo de criação 
 \section{Processo de configuração do Hadoop, Hive e Zeppelin}
 Para a instalação da plataforma Hadoop, foi utilizada uma máquina com sistema operacional Ubuntu 18.04.5 LTS que já continha o Java 8 instalado. Tal processo também pode ser feito em uma máquina virtual que contenha estes requisitos. A versão do Hadoop utilizada é a 3.2.1, que é a última versão estável. Através do terminal do Linux, inicialmente foi realizado o download da plataforma para posteriormente descompactar esta e configurar as variáveis de ambiente com o arquivo hadoop_vars.sh, configurar o arquivo hadoop_env.sh para que o Hadoop encontre o Java e configurar o diretório de logs, conforme os comandos abaixo:
 
-\begin{minted}[fontsize=\scriptsize]{bash}
+```bash
 wget -c https://downloads.apache.org/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz
 tar -zxvf hadoop-3.2.1.tar.gz
 mv hadoop-3.2.1 hadoop
-\end{minted}
+```
 
-\begin{minted}[fontsize=\scriptsize]{bash}
+```bash
 cat > hadoop_vars.sh << EOL
 export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which javac))))
 export HADOOP_HOME=$HOME/hadoop
 export PATH=$PATH:$HOME/hadoop/bin:$HOME/hadoop/sbin
 EOL
+```
 
+```bash
 source hadoop_vars.sh
 sed -i "\$aexport JAVA_HOME=$JAVA_HOME" $HADOOP_HOME/etc/hadoop/hadoopenv.sh
 mkdir $HADOOP_HOME/logs	
-\end{minted}
+```
 
 Na sequência, foi necessário alterar a configuração de arquivos que ficam na home do Hadoop. No arquivo \textit{core-site.xml} foi informado onde está localizado o sistema de arquivos e onde devem ser gravados arquivos de sistema. No arquivo \textit{hdfs-site.xml} foi indicado o número de réplicas para os blocos dos arquivos no sistema, que neste caso é apenas um, pois está sendo utilizada uma máquina. Por fim, no arquivo \textit{yarn-site.xml} foi habilitado o serviço \textit{mapreduce shuffle} e no arquivo mapred-site foi especificado que será utilizado o yarn como framework de escalonamento. Tais alterações foram realizadas com a inserção das seguintes propriedades:
 
