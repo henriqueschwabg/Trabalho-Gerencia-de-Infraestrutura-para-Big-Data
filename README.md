@@ -41,6 +41,7 @@ mkdir $HADOOP_HOME/logs
 
 Na sequência, foi necessário alterar a configuração de arquivos que ficam na home do Hadoop. No arquivo core-site.xml foi informado onde está localizado o sistema de arquivos e onde devem ser gravados arquivos de sistema. No arquivo hdfs-site.xml foi indicado o número de réplicas para os blocos dos arquivos no sistema, que neste caso é apenas um, pois está sendo utilizada uma máquina. Por fim, no arquivo yarn-site.xml foi habilitado o serviçomapreduce shuffle e no arquivo mapred-site foi especificado que será utilizado o yarn como framework de escalonamento. Tais alterações foram realizadas com a inserção das seguintes propriedades:
 
+```xml
 core-site.xml:
 <configuration>
 <property>
@@ -80,6 +81,7 @@ yarn-site.xml:
 <value>mapreduce_shuffle</value>
 </property>
 </configuration>
+```
 
 Em seguida, para finalizar a configuração do Hadoop, foi realizada a formatação do HDFS e a inicialização dos serviços do Hadoop em modo daemon para a criação dos diretórios e alteração de permissões, de acordo com os comandos a seguir:
 
