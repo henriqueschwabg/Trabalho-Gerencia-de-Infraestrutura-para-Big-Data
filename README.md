@@ -16,7 +16,7 @@ No repositório contém um relatório que descreve todo o processo de criação 
 **Link para o conjunto de dados:**
 * [Frota de Veiculos em Circulação Dezembro 2020](https://dados.rs.gov.br/dataset/frota-veiculos-em-circulacao/resource/85ea91f9-943b-43e0-bc1c-6570b4fcd565?inner_span=True)
 
-### Processo de configuração do Hadoop, Hive e Zeppelin
+### Processo de configuração do Hadoop, Hive e Zeppelin:
 Para a instalação da plataforma Hadoop, foi utilizada uma máquina com sistema operacional Ubuntu 18.04.5 LTS que já continha o Java 8 instalado. Tal processo também pode ser feito em uma máquina virtual que contenha estes requisitos. A versão do Hadoop utilizada é a 3.2.1, que é a última versão estável. Através do terminal do Linux, inicialmente foi realizado o download da plataforma para posteriormente descompactar esta e configurar as variáveis de ambiente com o arquivo hadoop_vars.sh, configurar o arquivo hadoop_env.sh para que o Hadoop encontre o Java e configurar o diretório de logs, conforme os comandos abaixo:
 
 ```bash
@@ -178,16 +178,37 @@ hdfs dfs -mkdir -p veiculosrs
 hdfs dfs -put VEI_DADOS_ABERTOS_20201201_1.CSV veiculosrs
 ```
 
-
 Após isto, a última etapa de configuração consistiu em acessar a interface do Zeppelin através do http://localhost:8080 para criar o interpretador do Hive com conexão via jdbc, uma vez que este não é nativo do sistema. Isto consistiu em ir até a opção interpreter que está dentro de anonymous no canto superior direito e depois clicar em “Create”, preenchendo em seguida o campo Interpreter name com “hive” e Interpreter Group com “jdbc”. Além disto, os campos abaixo também precisaram ser preenchidos, clicando-se em Save após o preenchimento:
 
-Properties
-default.driver: org.apache.hive.jdbc.HiveDriver 
-default.url: jdbc:hive2//localhost:10000
-default.user: username
-defaul.splitQueries: true
+Properties:
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default.driver</td>
+<td>org.apache.hive.jdbc.HiveDriver </td>
+</tr>
+<tr>
+<td>default.url</td>
+<td>jdbc:hive2//localhost:10000</td>
+</tr>
+<tr>
+<td>default.user</td>
+<td>username</td>
+</tr>
+<tr>
+<td>defaul.splitQueries</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
 
-Dependencies
+Dependencies:
 Property: /home/username/apache-hive-3.1.2-bin/jdbc/hive-jdbc-3.1.2-standalone.jar
 
 Com as configurações finalizadas, foi possível gerar um novo notebook selecionando o Hive como interpretador. Dentro deste notebook, após inserir comandos para configurar o Map Reduce como engine de execução dos jobs e o Yarn como o framework dos jobs, prosseguiu-se com a criação da tabela dezembro2020 com base no arquivo csv que foi carregado no HDFS:
@@ -210,7 +231,7 @@ LOCATION 'hdfs:///user/username/veiculosrs'
 TBLPROPERTIES ("skip.header.line.count"="1");
 ```
 
-### Análise dos Resultados
+### Análise dos Resultados:
 
 Para validarmos todo o processo que foi criado anteriormente, realizamos algumas consultas ao conjunto de dados, respondendo às perguntas pré-definidas. Como critério de seleção de automóveis, utilizamos os tipos 'AUTOMOVEL', 'UTILITARIO', 'CAMINHOTE',  'CAMIONETA’.
 
