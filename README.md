@@ -209,21 +209,51 @@ Properties:
 </table>
 
 Dependencies:
-Property: /home/username/apache-hive-3.1.2-bin/jdbc/hive-jdbc-3.1.2-standalone.jar
-
+<table>
+<thead>
+<tr>
+<th>Property</th>
+</tr>
+</thead>
+<tbody>
+<tr>/home/username/apache-hive-3.1.2-bin/jdbc/hive-jdbc-3.1.2-standalone.jar</tr>
+</tbody>
+</table>
+	
 Com as configurações finalizadas, foi possível gerar um novo notebook selecionando o Hive como interpretador. Dentro deste notebook, após inserir comandos para configurar o Map Reduce como engine de execução dos jobs e o Yarn como o framework dos jobs, prosseguiu-se com a criação da tabela dezembro2020 com base no arquivo csv que foi carregado no HDFS:
 
 ```sql
 CREATE DATABASE veiculosrs;
 USE veiculosrs;
 
-CREATE EXTERNAL TABLE dezembro2020 (marca STRING, fabricacao INT, categoria STRING, especie STRING,
-tipo STRING,carroceria STRING, cor STRING, combustivel STRING, cilindradas INT, potencia INT,
-situacao STRING, munic_emplacamento STRING, lotacao STRING, cmt STRING, pbt STRING,
-capacidade_carga STRING, tipo_proprietario STRING,sexo_proprietario STRING, idade INT, 
-data_aquisicao STRING, tipo_primeiro_registro STRING, dt_primeiro_reg STRING, 
-dt_ultimo_doc_licenciado STRING, situacao_licenciamento STRING,situacao_infracoes STRING, 
-restricoes STRING, tipo_restricao STRING)
+CREATE EXTERNAL TABLE dezembro2020 (
+	marca STRING
+      , fabricacao INT
+      , categoria STRING
+      , especie STRING
+      , tipo STRING
+      , carroceria STRING
+      , cor STRING
+      , combustivel STRING
+      , cilindradas INT
+      , potencia INT
+      , situacao STRING
+      , munic_emplacamento STRING
+      , lotacao STRING
+      , cmt STRING
+      , pbt STRING
+      , capacidade_carga STRING
+      , tipo_proprietario STRING
+      , sexo_proprietario STRING
+      , idade INT
+      , data_aquisicao STRING
+      , tipo_primeiro_registro STRING
+      , dt_primeiro_reg STRING
+      , dt_ultimo_doc_licenciado STRING
+      , situacao_licenciamento STRING
+      , situacao_infracoes STRING
+      , restricoes STRING
+      , tipo_restricao STRING)
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ';'
 STORED AS TEXTFILE
@@ -235,24 +265,24 @@ TBLPROPERTIES ("skip.header.line.count"="1");
 
 Para validarmos todo o processo que foi criado anteriormente, realizamos algumas consultas ao conjunto de dados, respondendo às perguntas pré-definidas. Como critério de seleção de automóveis, utilizamos os tipos 'AUTOMOVEL', 'UTILITARIO', 'CAMINHOTE',  'CAMIONETA’.
 
-\subsection{Quais são os dez automóveis mais registrados no RS?}
+Quais são os dez automóveis mais registrados no RS?
 
 Para obtermos os 10 automóveis com mais registros no estado do RS, selecionamos todas as marcas de carros e a quantidade de ocorrência de cada uma. No processo de seleção de cada uma das marcas, utilizamos uma expressão regular que seleciona todo o conteúdo até o primeiro espaço em branco encontrado no registro de cada marca, ignorando o conteúdo após o espaço em branco encontrado. 
 
-\begin{minted}[fontsize=\scriptsize]{sql}
+```sql
 SELECT REGEXP_EXTRACT(MARCA,'^\\S*',0) CARRO, COUNT(MARCA) QTD
 FROM DEZEMBRO2020
 WHERE TIPO IN('AUTOMOVEL','UTILITARIO','CAMINHONETE','CAMIONETA')
 GROUP BY REGEXP_EXTRACT(MARCA,'^\\S*',0)
 ORDER BY COUNT(MARCA) DESC
 LIMIT 10;
-\end{minted}
+```
 
-\subsection{Quais as 15 cores mais comuns em Porto Alegre em automóveis?}
+Quais as 15 cores mais comuns em Porto Alegre em automóveis?
 
 Para descobrirmos quais são as 15 cores de automóveis mais comuns em Porto Alegre, foi realizada uma consulta que seleciona todas as cores de automóveis e a quantidade de ocorrências de cada uma das 15 principais. 
 
-\begin{minted}[fontsize=\scriptsize]{sql}
+```sql
 SELECT COR, COUNT(COR) QTD
 FROM DEZEMBRO2020
 WHERE TIPO IN('AUTOMOVEL','UTILITARIO','CAMINHONETE','CAMIONETA')
@@ -260,34 +290,34 @@ AND MUNIC_EMPLACAMENTO = 'PORTO ALEGRE'
 GROUP BY COR
 ORDER BY COUNT(COR) DESC
 LIMIT 15;
-\end{minted}
+```
 
-\subsection{Quais os tipos de combustíveis mais utilizados no RS?}
+Quais os tipos de combustíveis mais utilizados no RS?
 
 Para visualizarmos quais são os tipos de combustíveis mais utilizados no estado do Rio do Grande do Sul, realizamos uma consulta que seleciona todos os tipos de combustíveis, exceto os registrados como 'SEM COMBUSTIVEL' e 'VIDE CAMPO OBSERVAÇÃO', e a quantidade de ocorrências de cada um deles.
 
-\begin{minted}[fontsize=\scriptsize]{sql}
+```sql
 SELECT COMBUSTIVEL, COUNT(COMBUSTIVEL) QTD
 FROM DEZEMBRO2020
 WHERE COMBUSTIVEL NOT IN('SEM COMBUSTIVEL','VIDE CAMPO OBSERVACAO')
 GROUP BY COMBUSTIVEL
 ORDER BY COUNT(COMBUSTIVEL) DESC;
-\end{minted}
+```
 
-\subsection{Quais são as marcas dos automóveis elétricos que rodam no RS?}
+Quais são as marcas dos automóveis elétricos que rodam no RS?
 
 Para obtermos os modelos/marcas dos automóveis elétricos que rodam no estado do Rio Grande do Sul, fizemos uma consulta selecionando todas as marcas de automóveis e suas ocorrências e com os tipos de combustíveis 'ELÉTRICO/FONTE INTERNA' e 'ELÉTRICO/FONTE EXTERNA'.
 
-\begin{minted}[fontsize=\scriptsize]{sql}
+```sql
 SELECT MARCA, COUNT(MARCA) QTD
 FROM DEZEMBRO2020
 WHERE COMBUSTIVEL IN ('ELETRICO/FONTE INTERNA','ELETRICO/FONTE EXTERNA')
 AND TIPO IN('AUTOMOVEL','UTILITARIO','CAMINHONETE','CAMIONETA')
 GROUP BY MARCA
 ORDER BY COUNT(MARCA) DESC
-\end{minted}
+```
 
-\subsection{Qual a média de idade, desvio padrão e o menor ano de fabricação da frota de automóveis em Porto Alegre, Caxias do Sul, Alvorada, Dom Pedrito, Santa Vitória do Palmar e Mostardas?}
+Qual a média de idade, desvio padrão e o menor ano de fabricação da frota de automóveis em Porto Alegre, Caxias do Sul, Alvorada, Dom Pedrito, Santa Vitória do Palmar e Mostardas?
 
 Para calcularmos a média de idade da frota de automóveis nas cidades de Porto Alegre, Caxias do Sul, Alvorada, Dom Pedrito, Santa Vitória do Palmar e Mostardas, fizemos uma consulta que seleciona o município de emplacamento dos automóveis e a média de idade dos automóveis. Adicionalmente, obtivemos o menor ano de fabricação de um automóvel naquela cidade e o desvio-padrão das idades dos automóveis.
 
