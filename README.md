@@ -122,9 +122,9 @@ cp $HADOOP_HOME/share/hadoop/hdfs/lib/guava-27.0-jre.jar $HIVE_HOME/lib
 rm $HIVE_HOME/lib/log4j-slf4j-impl-2.10.0.jar
 ```
 
-Para configurar o usuário que acessará o Hive, foi preciso novamente alterar o arquivo \textit{core-site.xml} incluindo as properties a seguir, nas quais username refere-se ao nome de usuário do sistema Linux:
+Para configurar o usuário que acessará o Hive, foi preciso novamente alterar o arquivo core-site.xml} incluindo as properties a seguir, nas quais username refere-se ao nome de usuário do sistema Linux:
 
-\begin{minted}[fontsize=\scriptsize]{xml}
+```xml
 <property>
 <name>hadoop.proxyuser.username.groups</name>
 <value>*</value>
@@ -133,93 +133,66 @@ Para configurar o usuário que acessará o Hive, foi preciso novamente alterar o
 <name>hadoop.proxyuser.username.hosts</name>
 <value>*</value>
 </property>
-\end{minted}
+```
 
 Na sequência, após reiniciar os serviços do Hadoop em modo daemon, a instalação do Hive foi concluída com a criação dos diretórios do Hive Metastore no HDFS e a inicialização do Hive Metastore utilizando o banco de dados Derby local:
 
-\begin{minted}[fontsize=\scriptsize]{bash}
+```bash
 hdfs dfs -mkdir -p /user/hive/warehouse
 hdfs dfs -chmod g+w /user/hive/warehouse
 mkdir $HIVE_HOME/hiveserver2
 cd $HIVE_HOME/hiveserver2
 $HIVE_HOME/bin/schematool -dbType derby -initSchema
-\end{minted}
+``` 
 
 Por fim, para possibilitar a utilização do Hive com uma interface gráfica mais amigável e que possibilita maior interação e criação de gráficos, foi realizada a instalação do Apache Zeppelin na versão 0.8.2: 
 
-\begin{minted}[fontsize=\scriptsize]{bash}
+```bash
 wget -c https://downloads.apache.org/zeppelin/zeppelin-0.8.2/zeppelin-0.8.2-bin-all.tgz
 tar -zxvf zeppelin-0.8.2-bin-all.tgz
-\end{minted}
+```
 
 Mais uma vez, foi realizada alteração do arquivo hadoop_vars.sh que contém a configuração das variáveis de ambiente, agora para incluir a linha referente ao Zeppelin e alterar a linha referente ao Path, carregando o arquivo com source após o processo:
 
-\begin{minted}[fontsize=\scriptsize]{bash}
+```bash
 export ZEPPELIN_HOME=$HOME/zeppelin-0.8.2-bin-all
 export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$HIVE_HOME/bin:$ZEPPELIN_HOME/bin:$PATH
-\end{minted}
+```
 
 Em seguida, fez-se necessária a alteração do arquivo zeppelin-env.sh que se encontra na pasta conf que está dentro da home do Zeppelin. Neste arquivo, a linha referente ao caminho de configuração do Hadoop foi descomentada para ficar da seguinte maneira (username refere-se ao usuário do sistema Linux):
 
-\begin{minted}[fontsize=\scriptsize]{bash}
+```bash
 export HADOOP_CONF_DIR=/home/username/hadoop/etc/hadoop
-\end{minted}
+```
 
 Concluída esta etapa e com os daemons do Hadoop ativos, foi possível inicializar os serviços do Hive e do Zeppelin, bem como inserir no HDFS o arquivo csv referente a frota de veículos em circulação em dezembro de 2020 no Rio Grande do Sul:
 
-\begin{minted}[fontsize=\scriptsize]{bash}
+```bash
 nohup $HIVE_HOME/bin/hive --service hiveserver2 \
 --hiveconf hive.security.authorization.createtable.owner.grants=ALL \
 --hiveconf hive.root.logger=INFO,console &
-\end{minted}
 
-\begin{minted}[fontsize=\scriptsize]{bash}
 $ZEPPELIN_HOME/bin/zeppelin-daemon.sh start
-\end{minted}
 
-\begin{minted}[fontsize=\scriptsize]{bash}
 hdfs dfs -mkdir -p veiculosrs
 hdfs dfs -put VEI_DADOS_ABERTOS_20201201_1.CSV veiculosrs
-\end{minted}
+```
 
 
 Após isto, a última etapa de configuração consistiu em acessar a interface do Zeppelin através do http://localhost:8080 para criar o interpretador do Hive com conexão via jdbc, uma vez que este não é nativo do sistema. Isto consistiu em ir até a opção interpreter que está dentro de anonymous no canto superior direito e depois clicar em “Create”, preenchendo em seguida o campo Interpreter name com “hive” e Interpreter Group com “jdbc”. Além disto, os campos abaixo também precisaram ser preenchidos, clicando-se em Save após o preenchimento:
 
-\begin{flushleft}
 Properties
-\end{flushleft}
-\begin{scriptsize}
-\begin{tabular}{|c|c|}
-\hline 
-\textit{Property} & \textit{Value} \\ 
-\hline 
-default.driver & org.apache.hive.jdbc.HiveDriver \\ 
-\hline 
-default.url & jdbc:hive2//localhost:10000 \\ 
-\hline 
-default.user & username \\ 
-\hline 
-defaul.splitQueries & true \\ 
-\hline 
-\end{tabular} 
-\end{scriptsize}
+default.driver: org.apache.hive.jdbc.HiveDriver 
+default.url: jdbc:hive2//localhost:10000
+default.user: username
+defaul.splitQueries: true
 
-\begin{flushleft}
 Dependencies
-\end{flushleft}
-\begin{scriptsize}
-\begin{tabular}{|c|}
-\hline 
-\textit{Property}  \\
-\hline 
-/home/username/apache-hive-3.1.2-bin/jdbc/hive-jdbc-3.1.2-standalone.jar\\ 
-\hline
-\end{tabular} 
-\end{scriptsize}
+Property: /home/username/apache-hive-3.1.2-bin/jdbc/hive-jdbc-3.1.2-standalone.jar
 
 Com as configurações finalizadas, foi possível gerar um novo notebook selecionando o Hive como interpretador. Dentro deste notebook, após inserir comandos para configurar o Map Reduce como engine de execução dos jobs e o Yarn como o framework dos jobs, prosseguiu-se com a criação da tabela dezembro2020 com base no arquivo csv que foi carregado no HDFS:
 
-\begin{minted}[fontsize=\scriptsize]{sql}
+```sql
 CREATE DATABASE veiculosrs;
 USE veiculosrs;
 
@@ -235,9 +208,9 @@ FIELDS TERMINATED BY ';'
 STORED AS TEXTFILE
 LOCATION 'hdfs:///user/username/veiculosrs'
 TBLPROPERTIES ("skip.header.line.count"="1");
-\end{minted}
+```
 
-\section{Análise dos Resultados}
+### Análise dos Resultados
 
 Para validarmos todo o processo que foi criado anteriormente, realizamos algumas consultas ao conjunto de dados, respondendo às perguntas pré-definidas. Como critério de seleção de automóveis, utilizamos os tipos 'AUTOMOVEL', 'UTILITARIO', 'CAMINHOTE',  'CAMIONETA’.
 
