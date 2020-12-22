@@ -23,17 +23,13 @@ Para a instalação da plataforma Hadoop, foi utilizada uma máquina com sistema
 wget -c https://downloads.apache.org/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz
 tar -zxvf hadoop-3.2.1.tar.gz
 mv hadoop-3.2.1 hadoop
-```
 
-```bash
 cat > hadoop_vars.sh << EOL
 export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which javac))))
 export HADOOP_HOME=$HOME/hadoop
 export PATH=$PATH:$HOME/hadoop/bin:$HOME/hadoop/sbin
 EOL
-```
 
-```bash
 source hadoop_vars.sh
 sed -i "\$aexport JAVA_HOME=$JAVA_HOME" $HADOOP_HOME/etc/hadoop/hadoopenv.sh
 mkdir $HADOOP_HOME/logs	
@@ -216,7 +212,9 @@ Dependencies:
 </tr>
 </thead>
 <tbody>
-<tr>/home/username/apache-hive-3.1.2-bin/jdbc/hive-jdbc-3.1.2-standalone.jar</tr>
+<tr>
+<td>/home/username/apache-hive-3.1.2-bin/jdbc/hive-jdbc-3.1.2-standalone.jar</td>
+</tr>
 </tbody>
 </table>
 	
