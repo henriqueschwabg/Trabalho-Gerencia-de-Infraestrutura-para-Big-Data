@@ -316,7 +316,7 @@ ORDER BY COUNT(MARCA) DESC
 
 Para calcularmos a média de idade da frota de automóveis nas cidades de Porto Alegre, Caxias do Sul, Alvorada, Dom Pedrito, Santa Vitória do Palmar e Mostardas, fizemos uma consulta que seleciona o município de emplacamento dos automóveis e a média de idade dos automóveis. Adicionalmente, obtivemos o menor ano de fabricação de um automóvel naquela cidade e o desvio-padrão das idades dos automóveis.
 
-'''sql
+```sql
 SELECT MUNIC_EMPLACAMENTO, AVG(2020 - FABRICACAO) AS MEDIA_IDADE_AUTOMOVEL
      , STDDEV_POP(2020 - FABRICACAO) AS DESVP_IDADE
      , MIN(FABRICACAO) AS  MENOR_ANO_FABRICACAO
@@ -326,4 +326,4 @@ AND MUNIC_EMPLACAMENTO IN ('PORTO ALEGRE','ALVORADA','CAXIAS DO SUL','DOM PEDRIT
 			  ,'SANTA VITORIA DO PALMAR','MOSTARDAS')
 GROUP BY MUNIC_EMPLACAMENTO
 ORDER BY MEDIA_IDADE_AUTOMOVEL
-'''
+```
