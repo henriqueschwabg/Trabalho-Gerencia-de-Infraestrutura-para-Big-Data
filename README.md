@@ -263,7 +263,7 @@ TBLPROPERTIES ("skip.header.line.count"="1");
 
 Para validarmos todo o processo que foi criado anteriormente, realizamos algumas consultas ao conjunto de dados, respondendo às perguntas pré-definidas. Como critério de seleção de automóveis, utilizamos os tipos 'AUTOMOVEL', 'UTILITARIO', 'CAMINHOTE',  'CAMIONETA’.
 
-Quais são os dez automóveis mais registrados no RS?
+**Quais são os dez automóveis mais registrados no RS?**
 
 Para obtermos os 10 automóveis com mais registros no estado do RS, selecionamos todas as marcas de carros e a quantidade de ocorrência de cada uma. No processo de seleção de cada uma das marcas, utilizamos uma expressão regular que seleciona todo o conteúdo até o primeiro espaço em branco encontrado no registro de cada marca, ignorando o conteúdo após o espaço em branco encontrado. 
 
@@ -276,7 +276,7 @@ ORDER BY COUNT(MARCA) DESC
 LIMIT 10;
 ```
 
-Quais as 15 cores mais comuns em Porto Alegre em automóveis?
+**uais as 15 cores mais comuns em Porto Alegre em automóveis?**
 
 Para descobrirmos quais são as 15 cores de automóveis mais comuns em Porto Alegre, foi realizada uma consulta que seleciona todas as cores de automóveis e a quantidade de ocorrências de cada uma das 15 principais. 
 
@@ -290,7 +290,7 @@ ORDER BY COUNT(COR) DESC
 LIMIT 15;
 ```
 
-Quais os tipos de combustíveis mais utilizados no RS?
+**Quais os tipos de combustíveis mais utilizados no RS?**
 
 Para visualizarmos quais são os tipos de combustíveis mais utilizados no estado do Rio do Grande do Sul, realizamos uma consulta que seleciona todos os tipos de combustíveis, exceto os registrados como 'SEM COMBUSTIVEL' e 'VIDE CAMPO OBSERVAÇÃO', e a quantidade de ocorrências de cada um deles.
 
@@ -302,7 +302,7 @@ GROUP BY COMBUSTIVEL
 ORDER BY COUNT(COMBUSTIVEL) DESC;
 ```
 
-Quais são as marcas dos automóveis elétricos que rodam no RS?
+**Quais são as marcas dos automóveis elétricos que rodam no RS?**
 
 Para obtermos os modelos/marcas dos automóveis elétricos que rodam no estado do Rio Grande do Sul, fizemos uma consulta selecionando todas as marcas de automóveis e suas ocorrências e com os tipos de combustíveis 'ELÉTRICO/FONTE INTERNA' e 'ELÉTRICO/FONTE EXTERNA'.
 
@@ -315,7 +315,7 @@ GROUP BY MARCA
 ORDER BY COUNT(MARCA) DESC
 ```
 
-Qual a média de idade, desvio padrão e o menor ano de fabricação da frota de automóveis em Porto Alegre, Caxias do Sul, Alvorada, Dom Pedrito, Santa Vitória do Palmar e Mostardas?
+**Qual a média de idade, desvio padrão e o menor ano de fabricação da frota de automóveis em Porto Alegre, Caxias do Sul, Alvorada, Dom Pedrito, Santa Vitória do Palmar e Mostardas?**
 
 Para calcularmos a média de idade da frota de automóveis nas cidades de Porto Alegre, Caxias do Sul, Alvorada, Dom Pedrito, Santa Vitória do Palmar e Mostardas, fizemos uma consulta que seleciona o município de emplacamento dos automóveis e a média de idade dos automóveis. Adicionalmente, obtivemos o menor ano de fabricação de um automóvel naquela cidade e o desvio-padrão das idades dos automóveis.
 
